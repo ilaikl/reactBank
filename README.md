@@ -1,8 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Make sure mongodb is running in the background, on cmd run:
+
+### `mongod`
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `node server`
 
 ### `npm start`
 
