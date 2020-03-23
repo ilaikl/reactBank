@@ -1,0 +1,20 @@
+#transactions-container{
+    display: grid;
+}
+
+.transaction-box{
+    margin: 10px;
+}
+
+.red{
+    background-color: tomato;
+}
+.green{
+    background-color: rgb(79, 192, 79);
+}
+.transaction-data{
+    margin: 10px;
+}
+/* .transaction-box button{
+
+} */
