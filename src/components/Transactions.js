@@ -6,9 +6,7 @@ import '../styles/Transactions.css'
 class Transaction extends Component {
     
     render() {
-        let posOrNeg = ""
-        if(this.props.transaction.amount>0) posOrNeg="green"
-        else posOrNeg="red"
+        let posOrNeg = this.props.transaction.amount>0 ? "green" : "red"
         return (
             <div className={"transaction-box "+posOrNeg}><span className="transaction-data">{this.props.transaction.amount}, {this.props.transaction.vendor}, {this.props.transaction.category}</span></div> //<button>Delete Transaction</button>
         )

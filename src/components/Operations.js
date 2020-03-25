@@ -8,47 +8,22 @@ class Operations extends Component {
     constructor() {
         super()
         this.state = {
-            transaction: {
                 amount: 0,
                 vendor: "",
                 category: ""
-            }
         }
     }
 
-    handleInputChangeAmount = async (event) => {
+    handleInputChange = (event) => {
         const value = event.target.value;
-        await this.setState({
-            transaction: {
-                amount: parseInt(value),
-                vendor: this.state.transaction.vendor,
-                category: this.state.transaction.category,
-            }
-        })
-    }
-    handleInputChangeVendor = async (event) => {
-        const value = event.target.value;
-        await this.setState({
-            transaction: {
-                amount: this.state.transaction.amount,
-                vendor: value,
-                category: this.state.transaction.category,
-            }
-        })
-    }
-    handleInputChangeCategory = async (event) => {
-        const value = event.target.value;
-        await this.setState({
-            transaction: {
-                amount: this.state.transaction.amount,
-                vendor: this.state.transaction.vendor,
-                category: value,
-            }
+        const key = event.target.name
+        this.setState({
+                [key]: value
         })
     }
 
     addTransaction = async (withdrawOrDeposit) => {
-        let transactionToSend = { ...this.state.transaction }
+        let transactionToSend = { ...this.state }
         if (transactionToSend.amount == undefined || transactionToSend.amount <= 0 || transactionToSend.vendor == "" || transactionToSend.category == "") {
             return
         }
@@ -67,9 +42,9 @@ class Operations extends Component {
     render() {
         return (
             <div id="operations-container">
-                <input id="amount-input" type="number" value={this.state.transaction.amount} placeholder="Amount" onChange={this.handleInputChangeAmount}></input>
-                <input id="vendor-input" type="text" value={this.state.transaction.vendor} placeholder="Vendor" onChange={this.handleInputChangeVendor}></input>
-                <input id="category-input" type="text" value={this.state.transaction.category} placeholder="Category" onChange={this.handleInputChangeCategory}></input>
+                <input id="amount-input" type="number" name="amount" value={this.state.amount} placeholder="Amount" onChange={this.handleInputChange}></input>
+                <input id="vendor-input" type="text" name="vendor" value={this.state.vendor} placeholder="Vendor" onChange={this.handleInputChange}></input>
+                <input id="category-input" type="text" name="category" value={this.state.category} placeholder="Category" onChange={this.handleInputChange}></input>
                 <button onClick={() => this.addTransaction(1)}>Deposit</button>
                 <button onClick={() => this.addTransaction(0)}>Whitdraw</button>
             </div>

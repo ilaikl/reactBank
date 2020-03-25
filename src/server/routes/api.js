@@ -4,7 +4,6 @@ const router = express.Router()
 const Transaction = require('../model/Transaction.js')
 
 router.get('/transactions', function (req, res) {
-
     Transaction.find({}, function (err, exes) {
         res.send(exes)
     })
